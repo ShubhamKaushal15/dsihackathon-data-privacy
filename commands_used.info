@@ -1,0 +1,9 @@
+python transform.py --transform undo_discretize --df ../yellow_cab_data/yellow_cab_data_synthetic.csv --schema ../yellow_cab_data/parameters.json --output_dir ../df_transform_result/
+
+python score.py --synthetic ../yellow_cab_data/yellow_cab_data_synthetic.csv --domain ../df_transform_result/domain.json --dataset ../df_transform_result/discretized.csv 
+
+python adaptive_grid.py --dataset ../df_transform_result/discretized.csv --domain ../df_transform_result/domain.json --save ../yellow_cab_data/yellow_cab_data_synthetic.csv
+
+python check_domain.py --dataset ../df_transform_result/discretized.csv --domain ../df_transform_result/domain.json
+
+python transform.py --transform discretize --df ../yellow_cab_data/processed_df.csv --schema ../yellow_cab_data/parameters.json --output_dir ../df_transform_result/
